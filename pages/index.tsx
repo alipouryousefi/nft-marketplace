@@ -1,11 +1,20 @@
-/* eslint-disable @next/next/no-img-element */
-
 import type { NextPage } from "next";
-import { BaseLayout, NftList } from "../components";
+import { BaseLayout, NftList } from "@ui";
 import nfts from "../content/meta.json";
-import { NftMeta } from "@/types/nft";
+import { NftMeta } from "@_types/nft";
+import { useWeb3 } from "@/components/providers/web3";
 
 const Home: NextPage = () => {
+  const { provider } = useWeb3();
+
+  const getAccounts = async () => {
+    const accounts = await provider!.listAccounts();
+  };
+
+  if (provider) {
+    getAccounts();
+  }
+
   return (
     <BaseLayout>
       <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
