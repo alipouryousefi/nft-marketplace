@@ -7,6 +7,11 @@ import { useWeb3 } from "@/components/providers/web3";
 const Home: NextPage = () => {
   const { provider } = useWeb3();
 
+  const getNftInfo =async ()=>{
+
+  }
+
+
   const getAccounts = async () => {
     const accounts = await provider!.listAccounts();
   };
